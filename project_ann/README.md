@@ -20,10 +20,10 @@ Progress: 100.0% ... Training loss: 0.073 ... Validation loss: 0.149
 During the execution the below graphs are shown:
 
 ### Training and Validation loss during all the training iterations
-![](/images/train_validation_loss.png?raw=true)
+![](./images/train_validation_loss.png?raw=true)
 
 ### Predictions vs Actuals benchmark on the trained ANN
-![](/images/prediction_vs_actuals.png?raw=true)
+![](./images/prediction_vs_actuals.png?raw=true)
 
 ## Prerequisites
 1. [python 3.6](https://www.python.org/downloads/release/python-369/)
