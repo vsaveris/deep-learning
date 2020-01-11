@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Exclude files/folders
+project_cnn/cnn_trained_models/cnnTL_trained_model.pt
