@@ -1,5 +1,5 @@
 # deep-learning
-Deep learning self-projects which I got inspired from my studies in the Deep Learning nanodegree (reference [1]). In this implementation the nanodegree projects are being expanded further, for experimentation and better understanding of the the Deep Learning concepts.
+Deep learning reworked projects from my studies in the Deep Learning nanodegree (reference [1]). In this implementation the nanodegree projects are being expanded further, for experimentation and better understanding of the the Deep Learning concepts.
 
 ## Projects
 * **Project ANN**: In this project, a neural network is built from scratch to carry out a prediction problem on the Bike Sharing Dataset (reference [2]). By building a neural network from the ground up, we can have a much better understanding of gradient descent, backpropagation, and other concepts that are important to know before we move to higher level tools such as PyTorch. The project together with its README file is hosted under the [project_ann](https://github.com/vsaveris/deep-learning/tree/master/project_ann) directory of the repository.
