@@ -7,10 +7,13 @@ The project consists of the below python files:
 * **cnn.py:** Implementation of a Convolutional Neural Network for dog's breed classification, using PyTorch and CUDA. 
 * **cnnTL.py:** Implementation of a Convolutional Neural Network for dog's breed classification with Transfer Learning, using PyTorch and CUDA.
 * **utils.py:** Utilities script where common project functions are implemented.
-* **determineBreed.py:** Application which selects 'n' random dog images ('n' is given as an input parameter) from the dataset (test images), and classifies them (estimate of the canine’s breed) using a saved trained model produced by the execution of the cnn.py or cnnTL.py scripts.
+* **determineBreed.py:** Application which selects 'n' random dog images ('n' is given as an input parameter) from the dataset (test images), and classifies them (estimate of the canine’s breed) using a saved trained model produced by the execution of the cnnTL.py script.
 
 ## Executing the project
 ### CNN from scratch
+Below is the execution details of the cnn.py script. The script creates a CNN model from scratch, it trains the model using the training and validation input images, and finally it tests the trained model using the testing input images. The training is done under a predefined set of hyperparameters values came from a model complexity analysis applied during the model design (not included in the script).
+The script outputs a graph showing the training and validation losses during the training execution (./graphs/cnn_train_losses.png) and saves the best performing trained model in a file (./cnn_trained_models/cnn_trained_model.pt).
+
 ```
 $python cnn.py
 Convolutional Neural Network implementation for dog's breed classification.
@@ -97,11 +100,16 @@ Plot Training Performance: ./graphs/cnn_train_losses.png
 Testing model: cuda = True
 Test finished in 6.195 seconds. Testing Loss: 2.741305
 Test Accuracy: 32.66% (273/836)
-``` 
+```  
 
 ![](./graphs/cnn_train_losses.png?raw=true)
 
+The model's accuracy is relatively low but improved drastically comparing with the requirement of the original project (accuracy requirement was > 10%). Further improvements can be done by using a more complex CNN and by using additional transformations for the input images. These improvements will be applied in a later version of the project.
+
 ### CNN with Transfer Learning
+Below is the execution details of the cnnTL.py script. The script creates a CNN model using transfer learning (VGG16 torchvision model, reference [1]), it trains the model using the training and validation input images, and finally it tests the trained model using the testing input images. The training is done under a predefined set of hyperparameters values came from a model complexity analysis applied during the model design (not included in the script).
+The script outputs a graph showing the training and validation losses during the training execution (./graphs/cnnTL_train_losses.png) and saves the best performing trained model in a file (./cnn_trained_models/cnnTL_trained_model.pt).
+
 ```
 $python cnnTL.py
 Convolutional Neural Network implementation for dog's breed classification with Transfer Learning.
@@ -242,7 +250,12 @@ Test Accuracy: 83.85% (701/836)
 
 ![](./graphs/cnnTL_train_losses.png?raw=true)
 
+The model's accuracy is very high mainly because of the VGG16 pre-trained model use (very deep learning model). Further improvements will be explored in a later version of the project.
+
 ### Determine Breed Application
+The script selects 'n' random dogs images and predicts their breed. The trained model used is the CNN TL. Because the file is > 500MB is not included in the repository, but it can be generated in advance by executing the cnnTL.py script.
+The script requires the below input parameters.
+
 ```
 python determineBreed.py -h
 Determine dog's breed application.
@@ -259,6 +272,7 @@ optional arguments:
                         CNN TL trained model to load
 ```
 
+An execution example of the script can be found below.
 
 ```
 $python determineBreed.py -n 10 -p ./data/dog_images/*/*/* -m ./cnn_trained_models/cnnTL_trained_model.pt
@@ -280,6 +294,8 @@ Test file: ./data/dog_images\train\002.Afghan_hound\Afghan_hound_00138.jpg, Pred
 
 Prediction Accuracy: 100.00%
 ```
+
+The expected accuraccy for the vast majority of the script executions is > 90%.
 
 ## Prerequisites
 1. [python 3.7](https://www.python.org/downloads/release/python-376/)
