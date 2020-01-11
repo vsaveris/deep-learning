@@ -244,6 +244,23 @@ Test Accuracy: 83.85% (701/836)
 
 ### Determine Breed Application
 ```
+python determineBreed.py -h
+Determine dog's breed application.
+usage: determineBreed.py [-h] -p images_path -n images_number -m CNN TL
+                         trained_model
+
+Determine dog's breed given an image, application.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -p images_path        images path
+  -n images_number      number of random test images (1 to 10)
+  -m CNN TL trained_model
+                        CNN TL trained model to load
+```
+
+
+```
 $python determineBreed.py -n 10 -p ./data/dog_images/*/*/* -m ./cnn_trained_models/cnnTL_trained_model.pt
 
 Determine dog's breed application.
