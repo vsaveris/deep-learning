@@ -244,7 +244,24 @@ Test Accuracy: 83.85% (701/836)
 
 ### Determine Breed Application
 ```
+$python determineBreed.py -n 10 -p ./data/dog_images/*/*/* -m ./cnn_trained_models/cnnTL_trained_model.pt
 
+Determine dog's breed application.
+images_path = ./data/dog_images/*/*/*, number_of_images = 10, trained_model_file = ./cnn_trained_models/cnnTL_trained_model.pt
+CUDA availability (True): Running on GPU.
+
+Test file: ./data/dog_images\train\115.Papillon\Papillon_07478.jpg, Predicted Breed: Papillon, Classification Result: Correct
+Test file: ./data/dog_images\train\061.English_cocker_spaniel\English_cocker_spaniel_04357.jpg, Predicted Breed: English_cocker_spaniel, Classification Result: Correct
+Test file: ./data/dog_images\valid\034.Boxer\Boxer_02392.jpg, Predicted Breed: Boxer, Classification Result: Correct
+Test file: ./data/dog_images\train\067.Finnish_spitz\Finnish_spitz_04656.jpg, Predicted Breed: Finnish_spitz, Classification Result: Correct
+Test file: ./data/dog_images\train\082.Havanese\Havanese_05600.jpg, Predicted Breed: Havanese, Classification Result: Correct
+Test file: ./data/dog_images\train\089.Irish_wolfhound\Irish_wolfhound_06026.jpg, Predicted Breed: Irish_wolfhound, Classification Result: Correct
+Test file: ./data/dog_images\train\091.Japanese_chin\Japanese_chin_06198.jpg, Predicted Breed: Japanese_chin, Classification Result: Correct
+Test file: ./data/dog_images\train\122.Pointer\Pointer_07837.jpg, Predicted Breed: Pointer, Classification Result: Correct
+Test file: ./data/dog_images\train\064.English_toy_spaniel\English_toy_spaniel_04504.jpg, Predicted Breed: English_toy_spaniel, Classification Result: Correct
+Test file: ./data/dog_images\train\002.Afghan_hound\Afghan_hound_00138.jpg, Predicted Breed: Afghan_hound, Classification Result: Correct
+
+Prediction Accuracy: 100.00%
 ```
 
 ## Prerequisites
