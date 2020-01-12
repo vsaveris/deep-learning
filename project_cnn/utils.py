@@ -223,7 +223,8 @@ def test(loaders, model, criterion, cuda):
         
 
 def dataLoader(batch_size, image_size, train_data_path, test_data_path, validation_data_path,
-               affine_degrees = 0, scale = None, norm_mean = [0.50, 0.50, 0.50], norm_std = [0.50, 0.50, 0.50]):
+               affine_degrees = 0, translate = None, scale = None, shear = None, 
+               norm_mean = [0.50, 0.50, 0.50], norm_std = [0.50, 0.50, 0.50]):
     '''
     Create data loaders for training, validation and testing data. 
 
@@ -240,8 +241,18 @@ def dataLoader(batch_size, image_size, train_data_path, test_data_path, validati
             The path of the validation data.
         affine_degrees (integer):
             Rotation degrees to be used in the Affine Transformation.
+        translate (2D tuple of floats):
+            Maximum absolute fraction for horizontal and vertical translations.        
         scale (tuple floats):
             Scale to be used in the Affine Transformation.
+        shear (sequence or float or int):
+            Range of degrees to select from. If shear is a number, a shear parallel 
+            to the x axis in the range (-shear, +shear) will be apllied. Else if shear 
+            is a tuple or list of 2 values a shear parallel to the x axis in the range 
+            (shear[0], shear[1]) will be applied. Else if shear is a tuple or list of 4 
+            values, a x-axis shear in (shear[0], shear[1]) and y-axis shear in (shear[2], 
+            shear[3]) will be applied. Will not apply shear by default.
+            cite: https://pytorch.org/docs/stable/torchvision/transforms.html
         norm_mean (3D list):
             Normalization mean.
         norm_std (3D list):
@@ -259,14 +270,15 @@ def dataLoader(batch_size, image_size, train_data_path, test_data_path, validati
     print('\nPrepare data loaders: batch_size = ', batch_size, ', image_size = ', image_size,
           ', train_data_path = ', train_data_path, ', test_data_path = ', test_data_path, 
           ', validation_data_path = ', validation_data_path, ', affine_degrees = ', affine_degrees,
-          ', scale = ', scale, ', norm_mean = ', norm_mean, ', norm_std = ', norm_std, sep = '')
+          ', translate = ', translate, ', scale = ', scale, ', shear = ', shear, 
+          ', norm_mean = ', norm_mean, ', norm_std = ', norm_std, sep = '')
     
     # Images transformation 
     image_tranform = transforms.Compose([transforms.Resize(image_size), 
         transforms.RandomAffine(degrees = affine_degrees, 
-            translate = None, 
+            translate = translate, 
             scale = scale,
-            shear = None, 
+            shear = shear, 
             resample = False, 
             fillcolor = 0),
         transforms.ToTensor(), 
