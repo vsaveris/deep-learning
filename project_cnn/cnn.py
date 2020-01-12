@@ -152,7 +152,8 @@ if __name__ == '__main__':
                                  train_data_path      = './data/dog_images/train', 
                                  test_data_path       = './data/dog_images/test', 
                                  validation_data_path = './data/dog_images/valid',
-                                 scale = (0.5, 2.0))
+                                 affine_degrees = 10, translate = (0.2, 0.2), 
+                                 scale = (0.5, 2.0), shear = (-10,10,-10,10))
     
     # Train the model
     ut.train(max_epochs = 500, stop_criterion = 10, loaders = data_loaders, model = cnn_model, 
